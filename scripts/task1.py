@@ -24,7 +24,7 @@ class RfidReader():
         self.current_pos = NavSatFix()
 
         # hook the first subscriber to our rfid-callback
-        rospy.Subscriber("/rfid_detections", RelativeHumidity, self.rfid_callback)
+        rospy.Subscriber("/rfid_detections", RelativeHumidity, self.rfid_callback, queue_size=1)
         
         # hook the first subscriber to the fix-callback
         rospy.Subscriber("/uav1/fix", NavSatFix, self.gps_callback)
@@ -39,6 +39,7 @@ class RfidReader():
         add the latest GPS position to the data printout
         
         """
+        # print RFID-sensor info to the screen
         rospy.loginfo("\n\n Read RFID-Sensor! Sensor: %s Humidity: %f \n", message.header.frame_id, message.relative_humidity)
     
     # GPS-position (fix) message callback 
