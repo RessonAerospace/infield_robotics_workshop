@@ -69,7 +69,7 @@ class RfidReader():
     # GPS-position (fix) message callback 
     def gps_callback(self, message : NavSatFix):
         # print the current position every two seconds (not for every message)
-        rospy.loginfo_throttle(2.0, "Read GPS Position. Lat: %f Long: %f \n", message.latitude, message.longituHEREde)
+        rospy.loginfo_throttle(2.0, "Read GPS Position. Lat: %f Long: %f \n", message.latitude, message.longitude)
         
         # store the position in a object attribute
         self.current_pos = message
