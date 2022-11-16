@@ -18,8 +18,6 @@ import csv
 import rospkg
 
 
-
-
 class RfidReader():
     
     def __init__(self):        
@@ -31,7 +29,7 @@ class RfidReader():
         self.fh = open(pkg_folder + "/results/humidity_sensors.csv", "w")
         
         # create a csv_writer object to write data the Dict-Writer uses a Dictionary Structure
-        self.csv_writer = csv.DictWriter(self.fh, fieldnames=['Latitude', 'Longitude', 'Humidity'])
+        self.csv_writer = csv.DictWriter(self.fh, fieldnames=['Sensor_ID', 'Latitude', 'Longitude', 'Humidity'])
 
         self.csv_writer.writeheader()
         
@@ -39,7 +37,7 @@ class RfidReader():
         self.current_pos = NavSatFix()
 
         # hook the first subscriber to our rfid-callback
-        rospy.Subscriber("/rfid_detections", RelativeHumidity, self.rfid_callback)
+        rospy.Subscriber("/rfid_detections", RelativeHumidity, self.rfid_callback, queue_size=1)
         
         # hook the first subscriber to the fix-callback
         rospy.Subscriber("/uav1/fix", NavSatFix, self.gps_callback)
@@ -48,23 +46,26 @@ class RfidReader():
     # RFID detection callback
     def rfid_callback(self, message : RelativeHumidity):
         
-        
+        # print RFID-sensor info to the screen
+        rospy.loginfo("\n\n Read RFID-Sensor! Sensor: %s Humidity: %f \n", message.header.frame_id, message.relative_humidity)
+                
         # we need to make sure the writer has been initialised and the file has not been closed:
         if self.csv_writer is not None:
                         
             """
             YOUR CODE GOES Below this part:
             
-            write the data to the csv file using the csv-writer
-            
-            the field names are: "Latitude", "Longitude", "Humidity"
+            write the data to the csv file using the csv-writer: self.csv_writer.writerow( Dict )
             
             the writer expects an argument of dictionary type: {"field1" : value1, "field2" : value2}
+            
+            the field names are: "Sensor_ID", "Latitude", "Longitude", "Humidity"
                     
             documentation of the csv-DictWriter can be found here: https://docs.python.org/3/library/csv.html#csv.DictWriter 
                 
             """
-            rospy.loginfo("\n\n Read RFID-Sensor! Sensor: %s Humidity: %f \n", message.header.frame_id, message.relative_humidity)
+            pass # do nothing
+            
 
     # GPS-position (fix) message callback 
     def gps_callback(self, message : NavSatFix):
