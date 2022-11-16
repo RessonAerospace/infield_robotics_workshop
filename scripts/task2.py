@@ -42,10 +42,16 @@ class RfidReader():
         # hook the first subscriber to the fix-callback
         rospy.Subscriber("/uav1/fix", NavSatFix, self.gps_callback)
         
+        # bool to avoid old latched message
+        self.init = True
+        
 
     # RFID detection callback
     def rfid_callback(self, message : RelativeHumidity):
-        
+        # skip first message (old latched)
+        if self.init:
+            self.init = False
+            return
         # print RFID-sensor info to the screen
         rospy.loginfo("\n\n Read RFID-Sensor! Sensor: %s Humidity: %f \n", message.header.frame_id, message.relative_humidity)
                 
@@ -69,6 +75,11 @@ class RfidReader():
 
     # GPS-position (fix) message callback 
     def gps_callback(self, message : NavSatFix):
+        
+        # let other callbacks know that gps is available
+        if self.init:
+            self.init = False
+        
         # print the current position every two seconds (not for every message)
         rospy.loginfo_throttle(2.0, "Read GPS Position. Lat: %f Long: %f \n", message.latitude, message.longitude)
         

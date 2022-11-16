@@ -36,6 +36,9 @@ class RfidReader():
         self.tfBuffer = tf2_ros.Buffer()
         # set up our TransformListener, this gives us access to transformations (even past ones through the buffer)
         self.listener = tf2_ros.TransformListener(self.tfBuffer)
+        
+        # bool to avoid old latched message
+        self.init = True
     
     def send_current_position_as_goal(self):
 
@@ -54,6 +57,9 @@ class RfidReader():
     
     # RFID detection callback 
     def rfid_callback(self, message : RelativeHumidity):
+        # skip message if no gps-data is available yet
+        if self.init:
+            return
         # check if the humidity we read out is below threshold
         if message.relative_humidity < 0.5:
             rospy.loginfo(" Humidity too low - Sending goal to UGV")
@@ -63,14 +69,16 @@ class RfidReader():
     # GPS-position (fix) message callback 
     def gps_callback(self, message : NavSatFix):
         
+        # let other callbacks know that gps is available
+        if self.init:
+            self.init = False
+        
         # print the current position every two seconds (not for every message)
         rospy.loginfo_throttle(2.0, "Read GPS Position. Lat: %f Long: %f \n", message.latitude, message.longitude)
         
         # store the position in a object attribute
         self.current_pos = message
         
-        
-
     def run(self):
 
         # spin() simply keeps python from exiting until this node is stopped
