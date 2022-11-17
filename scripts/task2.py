@@ -50,7 +50,6 @@ class RfidReader():
     def rfid_callback(self, message : RelativeHumidity):
         # skip first message (old latched)
         if self.init:
-            self.init = False
             return
         # print RFID-sensor info to the screen
         rospy.loginfo("\n\n Read RFID-Sensor! Sensor: %s Humidity: %f \n", message.header.frame_id, message.relative_humidity)

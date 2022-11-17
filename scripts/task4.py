@@ -53,6 +53,10 @@ class RfidReader():
         
         apply the transform to the current position of the UAV on the ground.
         
+        Reminder: p' = q * p * conj(q) 
+        
+        Or use the utility function for transformation provided by the tfBUffer class
+        
         """
     
     # RFID detection callback 

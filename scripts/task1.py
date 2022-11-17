@@ -43,6 +43,12 @@ class RfidReader():
         
         add the latest GPS position to the data printout
         
+        since variables are only valid within function scope (inside a function) we will use an object attribute that is set in the gps-callback
+        
+        object attributes can be accessed through "self.attribute" (e.g. print(self.init) )
+        
+        HINT: take a look at the printout in the gps-callback to get the syntax 
+        
         """
         # print RFID-sensor info to the screen
         rospy.loginfo("\n\n Read RFID-Sensor! Sensor: %s Humidity: %f \n", message.header.frame_id, message.relative_humidity)
