@@ -20,7 +20,8 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && echo 'source /opt/ros/${ROS_DISTRO}/setup.sh' >> /home/${USERNAME}/.bashrc \
     
     # Create workspace directory in which to clone repo
-    && mkdir -p /home/${USERNAME}/infield_robotics_ws/src
+    && mkdir -p /home/${USERNAME}/infield_robotics_ws/src \
+    && chown -R ${USERNAME}:${USERNAME} /home/${USERNAME} 
 
 # ********************************************************
 # * Anything else you want to do like clean up goes here *
