@@ -1,55 +1,69 @@
 # infield_robotics_workshop
+## About
 This repository contains material for the Infield Robotics Workshop of the VDI-Land.Technik / EurAgEng pre-conference.
 
-content of this readme: 
-- Requirements
-- Installation
-  - installation in a new catkin workspace
-  - installation in an existing catkin
-- Running the Excercises
+<details open="open">
+<summary>Table of Contents</summary>
 
+- [About](#about)
+- [Requirements](#requirements)
+- [Installation](#installation)
+    - [installation in a new catkin workspace](#installation-in-a-new-catkin-workspace)
+    - [installation in an existing catkin workspace](#installation-in-an-existing-catkin-workspace)
+- [Running the Excercises](#running-the-excercises)
+</details>
+
+-------------------------------------------------------------------------------------
+## Requirements
+
+A system with setup ROS 1 Melodic or higher (tested for Melodic and Noetic)
 
 -------------------------------------------------------------------------------------
 
-Requirements: A system with setup ROS 1 Melodic or higher
+## INSTALLATION
 
--------------------------------------------------------------------------------------
+### installation in a new catkin workspace 
 
-INSTALLATION
-
-installation in a new catkin workspace using catkin_make
+exemplary installation using using catkin_make
 
 source your ROS installation (replace ROS_DISTRO with the ROS_DISTRO you are using (e.g. 'noetic')
-
-$ source /opt/ros/ROS_DISTRO/setup.bash
+```sh
+source /opt/ros/ROS_DISTRO/setup.bash
+```
 
 create new catkin workspace
-
-$ mkdir -p ~/infield_robotics_ws/src
+```sh
+mkdir -p ~/infield_robotics_ws/src
+```
 
 swithc into that workspace
-
-$ cd ~/infield_robotics_ws/src
+```sh
+cd ~/infield_robotics_ws/src
+```
 
 clone the repository with the tasks
-
-$ git clone https://github.com/ATB-potsdam-automation/infield_robotics_workshop.git
+```sh
+git clone https://github.com/ATB-potsdam-automation/infield_robotics_workshop.git
+```
 
 (optional) clone the repository with the solutions
-
-$ git clone https://github.com/ATB-potsdam-automation/infield_robotics_workshop_solutions.git
+```sh
+git clone https://github.com/ATB-potsdam-automation/infield_robotics_workshop_solutions.git
+```
 
 switch to workspace root folder
-
-$ cd ~/infield_robotics_ws
+```sh
+cd ~/infield_robotics_ws
+```
 
 build the workspace
-
-$ catkin_make
+```sh
+catkin_make
+```
 
 --------------------
 
-installation in an existing catkin
+### installation in an existing catkin workspace
 
 1. source your catkin workspace
 2. change directory into your workspaces src folder
@@ -58,21 +72,24 @@ installation in an existing catkin
 
 -------------------------------------------------------------------------------------
 
-RUNNING THE EXCERCISES
+## RUNNING THE EXCERCISES
 
-open a terminal and source your catkin_ws and ROS installation 
-
-$ ~/infield_robotics_ws/devel/setup.bash
+open a terminal and source your catkin_ws and ROS installation
+```sh
+~/infield_robotics_ws/devel/setup.bash
+```
 
 launch the data playback
-
-$ roslaunch infield_robotics_workshop workshop.launch
+```sh
+roslaunch infield_robotics_workshop workshop.launch
+```
 
 open a second terminal and source your catkin_ws and ROS installation 
+```sh
+~/infield_robotics_ws/devel/setup.bash
+```
 
-$ ~/infield_robotics_ws/devel/setup.bash
-
-run the tasks (here the task1.py)
-
-$ rosrun infield_robotics_workshop task1.py
-
+run the tasks contained in the 'scripts' foulder (here the task1.py)
+```sh
+rosrun infield_robotics_workshop task1.py
+```
