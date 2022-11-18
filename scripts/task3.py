@@ -42,11 +42,18 @@ class RfidReader():
         """
         YOUR CODE GOES HERE:
         
-        get the transform between the frame   map   and the frame   uav/base_link   (position of the uav) 
+        Get the transform from the frame "map" to the frame "uav/base_link" (position of the uav) 
         using the tfBuffer: self.tfBuffer.lookup_transform(target_frame, source_frame, time, timeout)
-        print out the result.
-        translation kann be accessed as e.g. transform_object.transform.translation.x. 
-        rotation as transform_object.transform.rotation.x
+        
+        Time is the time at which we want to transform. Also, lookup_transform() will block until the transform between the two frames becomes available.
+        Therefore, you can set a timeout with the 4. (optional) argument.
+        
+        (If you need more information regarding the time arguments look up the ROS function lookup_transform online)
+        
+        Translation [x y z] kann be accessed as e.g. transform_object.transform.translation.x ,
+        equivalent rotation [x y z w] as e.g. transform_object.transform.rotation.x 
+        
+        Print out the resulting transformation as loginfo.
         """
         pass # do nothing
    
@@ -89,5 +96,9 @@ if __name__ == '__main__':
     # name for our 'listener' node so that multiple listeners can
     # run simultaneously.
     rospy.init_node('listener', anonymous=True)
+    
+    # Instantiate object of  the RfidReader() class
     RFID_reader = RfidReader()
+    
+    # execute the objects run() method 
     RFID_reader.run()
