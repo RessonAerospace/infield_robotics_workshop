@@ -56,6 +56,7 @@ class RfidReader():
         Reminder: p' = q * p * conj(q) 
         
         Or use the utility function for transformation provided by the tfBUffer class
+         - best: do both and compare the results
         
         """
     
@@ -97,5 +98,9 @@ if __name__ == '__main__':
     # name for our 'listener' node so that multiple listeners can
     # run simultaneously.
     rospy.init_node('listener', anonymous=True)
+    
+    # Instantiate object of  the RfidReader() class
     RFID_reader = RfidReader()
+    
+    # execute the objects run() method 
     RFID_reader.run()
