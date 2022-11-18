@@ -1,0 +1,38 @@
+{
+	"name": "ros",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"args": {
+			"DEVCONTAINER_ROS_IMAGE_TAG": "noetic",
+			"USERNAME": "user"
+		}
+	},
+	"extensions": [
+		"ms-iot.vscode-ros",
+		"ms-python.python"
+	],
+	"features": {
+		"ghcr.io/devcontainers/features/git:1": {}
+	},
+	"workspaceMount": "source=${localWorkspaceFolder},target=/home/user/infield_robotics_ws/src,type=bind",
+	"workspaceFolder": "/home/user/infield_robotics_ws",
+	"settings": {
+		"terminal.integrated.defaultProfile.linux": "bash", 
+        "terminal.integrated.profiles.linux": {
+            "bash": {
+                "path": "/bin/bash"
+            }
+        }
+	}
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "pip3 install --user -r requirements.txt",
+
+	// Configure tool-specific properties.
+	// "customizations": {},
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}

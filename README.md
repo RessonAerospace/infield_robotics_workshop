@@ -1,4 +1,6 @@
 # infield_robotics_workshop
+[![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/microsoft/vscode-remote-try-java)
+
 ## About
 This repository contains material for the Infield Robotics Workshop of the VDI-Land.Technik / EurAgEng pre-conference.
 
@@ -36,7 +38,7 @@ create new catkin workspace
 mkdir -p ~/infield_robotics_ws/src
 ```
 
-swithc into that workspace
+switch into that workspace
 ```sh
 cd ~/infield_robotics_ws/src
 ```
@@ -71,6 +73,17 @@ catkin_make
 4. build using catkin_make / catkin build
 
 -------------------------------------------------------------------------------------
+
+### Installation using Devcontainers (VS Code)
+A Devcontainer configuration is provided in this repo under `.devcontainer` for use within VS Code. 
+Note: You will need to have Docker installed on your system in order to build the container.
+
+1. Install the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) for VS Code.
+2. From the remote connection window (found by clicking on the green icon at the bottom left of the VS Code window) choose "Reopen in Container"
+
+The container will open in a pre-made ROS workspace directory with this respository cloned inside a `src/` subdirectory, having already run the setup script for ROS.
+
+See [here](https://code.visualstudio.com/docs/devcontainers/containers) for more information about using Devcontainers in VS Code.
 
 ## RUNNING THE EXCERCISES
 
