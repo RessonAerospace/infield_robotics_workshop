@@ -12,6 +12,7 @@ This repository contains material for the Infield Robotics Workshop of the VDI-L
 - [Installation](#installation)
     - [installation in a new catkin workspace](#installation-in-a-new-catkin-workspace)
     - [installation in an existing catkin workspace](#installation-in-an-existing-catkin-workspace)
+    - [installation using VS Code Devcontainer](#installation-using-devcontainers-vs-code)
 - [Running the Excercises](#running-the-excercises)
 </details>
 
@@ -75,8 +76,10 @@ catkin_make
 -------------------------------------------------------------------------------------
 
 ### Installation using Devcontainers (VS Code)
+**NOTE: This option installs the workspace in a Docker container, unlike the above two options which install on your local system.**
+
 A Devcontainer configuration is provided in this repo under `.devcontainer` for use within VS Code. 
-Note: You will need to have Docker installed on your system in order to build the container.
+Note: You will need to have [Docker](https://docs.docker.com/get-docker/) installed on your system in order to build and run the container.
 
 1. Install the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) for VS Code.
 2. From the remote connection window (found by clicking on the green icon at the bottom left of the VS Code window) choose "Reopen in Container"
