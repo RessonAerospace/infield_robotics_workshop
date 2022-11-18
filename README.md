@@ -1,4 +1,6 @@
 # infield_robotics_workshop
+[![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/ATB-potsdam-automation/infield_robotics_workshop)
+
 ## About
 This repository contains material for the Infield Robotics Workshop of the VDI-Land.Technik / EurAgEng pre-conference.
 
@@ -10,6 +12,7 @@ This repository contains material for the Infield Robotics Workshop of the VDI-L
 - [Installation](#installation)
     - [installation in a new catkin workspace](#installation-in-a-new-catkin-workspace)
     - [installation in an existing catkin workspace](#installation-in-an-existing-catkin-workspace)
+    - [installation using VS Code Devcontainer](#installation-using-devcontainers-vs-code)
 - [Running the Excercises](#running-the-excercises)
 </details>
 
@@ -36,7 +39,7 @@ create new catkin workspace
 mkdir -p ~/infield_robotics_ws/src
 ```
 
-swithc into that workspace
+switch into that workspace
 ```sh
 cd ~/infield_robotics_ws/src
 ```
@@ -71,6 +74,20 @@ catkin_make
 4. build using catkin_make / catkin build
 
 -------------------------------------------------------------------------------------
+
+### Installation using Devcontainers (VS Code)
+**NOTE: This option installs the workspace in a Docker container, unlike the above two options which install on your local system.**
+
+A Devcontainer configuration is provided in this repo under `.devcontainer` for use within VS Code. 
+Note: You will need to have [Docker](https://docs.docker.com/get-docker/) installed on your system in order to build and run the container.
+
+1. Install the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) for VS Code.
+2. From the remote connection window (found by clicking on the green icon at the bottom left of the VS Code window) choose "Reopen in Container"
+3. Build using catkin_make / catkin build
+
+The container will open in a pre-made ROS workspace directory with this respository cloned inside a `src/` subdirectory, having already run the setup script for ROS.
+
+See [here](https://code.visualstudio.com/docs/devcontainers/containers) for more information about using Devcontainers in VS Code.
 
 ## RUNNING THE EXCERCISES
 
